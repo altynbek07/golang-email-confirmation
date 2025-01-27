@@ -10,6 +10,9 @@ services:
       - .:/app
     networks:
       - email_confirmation_network
+    depends_on:
+      - postgres
+      - mailpit
 
   postgres:
     container_name: email_confirmation_postgres
