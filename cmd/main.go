@@ -2,11 +2,29 @@ package main
 
 import (
 	"fmt"
+	"go/email-confirmation/configs"
+	"go/email-confirmation/internal/auth"
+	"go/email-confirmation/internal/user"
+	"go/email-confirmation/pkg/db"
 	"net/http"
 )
 
 func App() *http.ServeMux {
+	conf := configs.LoadConfig()
+	db := db.NewDb(conf)
 	router := http.NewServeMux()
+
+	// Repositories
+	userRepository := user.NewUserRepository(db)
+
+	// Services
+	authService := auth.NewAuthService(userRepository)
+
+	// Handler
+	auth.NewAuthHandler(router, auth.AuthHandlerDeps{
+		Config:      conf,
+		AuthService: authService,
+	})
 
 	return router
 }
