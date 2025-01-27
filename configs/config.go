@@ -1,6 +1,7 @@
 package configs
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -29,10 +30,20 @@ func LoadConfig() *Config {
 
 	return &Config{
 		Db: DbConfig{
-			Dsn: os.Getenv("DSN"),
+			Dsn: generateDsn(),
 		},
 		Auth: AuthConfig{
 			Secret: os.Getenv("SECRET"),
 		},
 	}
+}
+
+func generateDsn() string {
+	return fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
+		os.Getenv("POSTGRES_HOST"),
+		os.Getenv("POSTGRES_USER"),
+		os.Getenv("POSTGRES_PASSWORD"),
+		os.Getenv("POSTGRES_DB"),
+		os.Getenv("POSTGRES_PORT"),
+		os.Getenv("POSTGRES_SSLMODE"))
 }

@@ -18,13 +18,14 @@ services:
     container_name: email_confirmation_postgres
     image: postgres:16.4
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: my_pass
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-my_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-email_confirmation}
       PGDATA: /data/postgres
     volumes:
       - ./postgres-data:/data/postgres
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     networks:
       - email_confirmation_network
 
