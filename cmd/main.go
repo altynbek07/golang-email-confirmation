@@ -6,6 +6,7 @@ import (
 	"go/email-verification/internal/auth"
 	"go/email-verification/internal/user"
 	"go/email-verification/pkg/db"
+	"go/email-verification/pkg/mail"
 	"net/http"
 )
 
@@ -19,11 +20,13 @@ func App() *http.ServeMux {
 
 	// Services
 	authService := auth.NewAuthService(userRepository)
+	mailService := mail.NewEmailService(conf)
 
 	// Handler
 	auth.NewAuthHandler(router, auth.AuthHandlerDeps{
-		Config:      conf,
-		AuthService: authService,
+		Config:       conf,
+		AuthService:  authService,
+		EmailService: mailService,
 	})
 
 	return router
