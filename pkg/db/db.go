@@ -1,7 +1,7 @@
 package db
 
 import (
-	"go/email-confirmation/configs"
+	"go/email-verification/configs"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

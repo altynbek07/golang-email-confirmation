@@ -1,10 +1,10 @@
 package auth
 
 import (
-	"go/email-confirmation/configs"
-	"go/email-confirmation/pkg/jwt"
-	"go/email-confirmation/pkg/req"
-	"go/email-confirmation/pkg/res"
+	"go/email-verification/configs"
+	"go/email-verification/pkg/jwt"
+	"go/email-verification/pkg/req"
+	"go/email-verification/pkg/res"
 	"net/http"
 )
 
@@ -80,3 +80,30 @@ func (handler *AuthHandler) Register() http.HandlerFunc {
 		res.Json(w, data, 201)
 	}
 }
+
+// func (handler *AuthHandler) Register() http.HandlerFunc {
+// 	return func(w http.ResponseWriter, r *http.Request) {
+// 		body, err := req.HandleBody[RegistrationRequest](w, r)
+
+// 		if err != nil {
+// 			return
+// 		}
+
+// 		email, err := handler.AuthService.Register(body.Email, body.Password, body.Name)
+// 		if err != nil {
+// 			http.Error(w, err.Error(), http.StatusUnauthorized)
+// 			return
+// 		}
+
+// 		token, err := jwt.NewJWT(handler.Config.Auth.Secret).Create(jwt.JWTData{Email: email})
+// 		if err != nil {
+// 			http.Error(w, err.Error(), http.StatusInternalServerError)
+// 			return
+// 		}
+
+// 		data := RegistrationResponse{
+// 			Token: token,
+// 		}
+// 		res.Json(w, data, 201)
+// 	}
+// }

@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"go/email-confirmation/configs"
-	"go/email-confirmation/internal/auth"
-	"go/email-confirmation/internal/user"
-	"go/email-confirmation/pkg/db"
+	"go/email-verification/configs"
+	"go/email-verification/internal/auth"
+	"go/email-verification/internal/user"
+	"go/email-verification/pkg/db"
 	"net/http"
 )
 

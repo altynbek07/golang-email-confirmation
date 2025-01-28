@@ -2,8 +2,8 @@ package auth
 
 import (
 	"errors"
-	"go/email-confirmation/internal/user"
-	"go/email-confirmation/pkg/di"
+	"go/email-verification/internal/user"
+	"go/email-verification/pkg/di"
 
 	"golang.org/x/crypto/bcrypt"
 )

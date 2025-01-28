@@ -1,7 +1,7 @@
 package di
 
 import (
-	"go/email-confirmation/internal/user"
+	"go/email-verification/internal/user"
 )
 
 type IUserRepository interface {

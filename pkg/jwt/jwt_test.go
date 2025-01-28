@@ -1,7 +1,7 @@
 package jwt_test
 
 import (
-	"go/email-confirmation/pkg/jwt"
+	"go/email-verification/pkg/jwt"
 	"testing"
 )
 

@@ -1,6 +1,6 @@
 package user
 
-import "go/email-confirmation/pkg/db"
+import "go/email-verification/pkg/db"
 
 type UserRepository struct {
 	Database *db.Db

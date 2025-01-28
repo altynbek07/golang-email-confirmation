@@ -1,4 +1,4 @@
-module go/email-confirmation
+module go/email-verification
 
 go 1.23.3
 

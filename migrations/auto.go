@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go/email-confirmation/internal/user"
+	"go/email-verification/internal/user"
 	"log"
 	"os"
 

@@ -1,8 +1,8 @@
 package auth_test
 
 import (
-	"go/email-confirmation/internal/auth"
-	"go/email-confirmation/internal/user"
+	"go/email-verification/internal/auth"
+	"go/email-verification/internal/user"
 	"testing"
 )
 

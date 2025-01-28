@@ -1,7 +1,7 @@
 package req
 
 import (
-	"go/email-confirmation/pkg/res"
+	"go/email-verification/pkg/res"
 	"net/http"
 )
 
