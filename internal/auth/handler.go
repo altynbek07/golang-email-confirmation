@@ -4,6 +4,7 @@ import (
 	"go/email-verification/configs"
 	"go/email-verification/pkg/jwt"
 	"go/email-verification/pkg/mail"
+	"go/email-verification/pkg/middleware"
 	"go/email-verification/pkg/req"
 	"go/email-verification/pkg/res"
 	"net/http"
@@ -29,7 +30,7 @@ func NewAuthHandler(router *http.ServeMux, deps AuthHandlerDeps) {
 	}
 	router.HandleFunc("POST /auth/login", handler.Login())
 	router.HandleFunc("POST /auth/register", handler.Register())
-	router.HandleFunc("GET /auth/test", handler.Test())
+	router.Handle("GET /auth/test", middleware.IsAuthed(handler.Test(), deps.Config))
 	// router.HandleFunc("POST /email/verification-notification", handler.SendVerification())
 }
 
